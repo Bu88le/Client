@@ -9,33 +9,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import serverConnection.ChatConnection;
-
 public class PanelClient extends JPanel {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4308067181923954687L;
+	private static final long	serialVersionUID	= -4308067181923954687L;
 	
-	static JPanel panelLeft, panelCenter;
+	static JPanel				panelLeft, panelCenter;
 
 	public PanelClient() {
-		this.setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 		initGUI();
 	}
 	
 	private void initGUI() {
-		
+
 		panelLeft = new JPanel();
 		panelLeft.setLayout(new BoxLayout(panelLeft, BoxLayout.Y_AXIS));
 		panelLeft.setBorder(new LineBorder(Color.RED));
-		panelLeft.setPreferredSize(new Dimension((MainFrame.mainFrame.getWidth()/3), MainFrame.mainFrame.getHeight()));
+		panelLeft.setPreferredSize(new Dimension((MainFrame.mainFrame.getWidth() / 3), MainFrame.mainFrame.getHeight()));
 		this.add(panelLeft, BorderLayout.LINE_START);
 		
 		panelCenter = new JPanel();
 		panelCenter.setBorder(new LineBorder(Color.red));
-		panelCenter.setPreferredSize(new Dimension((MainFrame.mainFrame.getWidth()/3)*2, MainFrame.mainFrame.getHeight()));
+		panelCenter.setPreferredSize(new Dimension((MainFrame.mainFrame.getWidth() / 3) * 2, MainFrame.mainFrame.getHeight()));
 		{
 			JLabel lbl = new JLabel("Test");
 			panelCenter.add(lbl);
@@ -44,7 +39,7 @@ public class PanelClient extends JPanel {
 	}
 	
 	public static void refresh() {
-		panelLeft.setPreferredSize(new Dimension(MainFrame.mainFrame.getWidth()/3,  MainFrame.mainFrame.getHeight()));
-		panelCenter.setPreferredSize(new Dimension((MainFrame.mainFrame.getWidth()/3)*2,  MainFrame.mainFrame.getHeight()));
+		panelLeft.setPreferredSize(new Dimension(MainFrame.mainFrame.getWidth() / 3, MainFrame.mainFrame.getHeight()));
+		panelCenter.setPreferredSize(new Dimension((MainFrame.mainFrame.getWidth() / 3) * 2, MainFrame.mainFrame.getHeight()));
 	}
 }
