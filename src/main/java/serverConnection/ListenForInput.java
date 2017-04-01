@@ -1,6 +1,6 @@
 package serverConnection;
 
-public class LookForUser implements Runnable {
+public class ListenForInput implements Runnable {
 	
 	@Override
 	public void run() {

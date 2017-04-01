@@ -10,14 +10,13 @@ import network.SendableMessage.MessageState;
  * SendableMessage is supposed to have a method that generates an instance of this class.
  */
 public class SendableMessageResponse extends Sendable {
-
-	private static final long	serialVersionUID	= 1L;
-	private final UUID			recipient;
-	private final Date			timestampSent, timestampServerReceived, timestampServerSent, timestampDelivered, timestampRead;
-	private final MessageState	state;
-
-	public SendableMessageResponse(UUID recipient, Date timestampSent, Date timestampServerReceived,
-			Date timestampServerSent, Date timestampDelivered, Date timestampRead, MessageState state) {
+	
+	private static final long							serialVersionUID	= 1L;
+	private final UUID									recipient;
+	private final Date									timestampSent, timestampServerReceived, timestampServerSent, timestampDelivered, timestampRead;
+	private final network.SendableMessage.MessageState	state;
+	
+	public SendableMessageResponse(UUID recipient, Date timestampSent, Date timestampServerReceived, Date timestampServerSent, Date timestampDelivered, Date timestampRead, MessageState state) {
 		super(SendableType.MESSAGE_RESPONSE);
 		this.recipient = recipient;
 		this.timestampSent = timestampSent;
@@ -27,34 +26,34 @@ public class SendableMessageResponse extends Sendable {
 		this.timestampRead = timestampRead;
 		this.state = state;
 	}
-
+	
 	public UUID getRecipient() {
 		return recipient;
 	}
-
+	
 	@Override
 	public Date getTimestampSent() {
 		return timestampSent;
 	}
-
+	
 	public Date getTimestampServerReceived() {
 		return timestampServerReceived;
 	}
-
+	
 	public Date getTimestampServerSent() {
 		return timestampServerSent;
 	}
-
+	
 	public Date getTimestampDelivered() {
 		return timestampDelivered;
 	}
-
+	
 	public Date getTimestampRead() {
 		return timestampRead;
 	}
-
-	public MessageState getState() {
+	
+	public network.SendableMessage.MessageState getState() {
 		return state;
 	}
-
+	
 }

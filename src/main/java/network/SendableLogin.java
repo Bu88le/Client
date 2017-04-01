@@ -1,21 +1,19 @@
 package network;
 
-import java.util.UUID;
-
 public class SendableLogin extends Sendable {
 
 	private static final long serialVersionUID = 1L;
-	private final UUID			uuid;
+	private final String		username;
 	private final String		password;
 	
-	public SendableLogin(UUID uuid, String password) {
+	public SendableLogin(String username, String password) {
 		super(SendableType.LOGIN);
-		this.uuid = uuid;
+		this.username = username;
 		this.password = password;
 	}
 	
-	public UUID getUUID() {
-		return uuid;
+	public String getUsername() {
+		return username;
 	}
 	
 	public String getPassword() {

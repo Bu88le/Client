@@ -3,6 +3,8 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
@@ -13,11 +15,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import serverConnection.ServerConnection;
+
 public class MainFrame {
-	
+
 	public static JFrame	mainFrame;
 	static JPanel			centerpanel	= null;
-	public static JFrame	loginFrame;
 	JButton					bt_login, bt_register;
 	JTextField				tf_username;
 	JPasswordField			pf_password;
@@ -25,42 +28,65 @@ public class MainFrame {
 	BufferedImage			image;
 	public static JLabel	message;
 	static Container		c;
-
-	public MainFrame() {
+	PanelClient				pc;
+	
+	ServerConnection		connection;
+	
+	public MainFrame(ServerConnection connection) {
+		this.connection = connection;
 		initGUI();
 	}
-
-	@SuppressWarnings("unused")
+	
 	private void initGUI() {
 		mainFrame = new JFrame("Client");
 		mainFrame.setSize(new Dimension(600, 450));
+		mainFrame.setMinimumSize(new Dimension(600, 450));
 		mainFrame.setLocationRelativeTo(null);
 		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		c = mainFrame.getContentPane();
 		c.setLayout(new BorderLayout());
-		mainFrame.setMinimumSize(new Dimension(600, 450));
 		
-		panelLogin();
+		//panelLogin();
+		panelClient();
 		mainFrame.setVisible(true);
-		
-	}
 
+	}
+	
 	private void panelLogin() {
 		if (centerpanel != null)
 			c.remove(centerpanel);
-
-		c.add(centerpanel = new PanelLogin(), BorderLayout.CENTER);
+		
+		c.add(centerpanel = new PanelLogin(connection, mainFrame), BorderLayout.CENTER);
 		c.revalidate();
-
+		
 	}
-
-	public static void panelClient() {
-		c.remove(centerpanel);
-		c.add(centerpanel = new PanelClient(), BorderLayout.CENTER);
+	
+	public void panelClient() {
+		//c.remove(centerpanel);
+		pc = new PanelClient();
+		c.add(centerpanel = pc, BorderLayout.CENTER);
 		c.revalidate();
+		listener();
 	}
-
+	
 	public static Dimension getDimension() {
 		return mainFrame.getSize();
+	}
+
+	public static JFrame getFrame() {
+		return mainFrame;
+	}
+
+	private void listener() {
+		mainFrame.addComponentListener(new ComponentAdapter() {
+			
+			@Override
+			public void componentResized(ComponentEvent e) {
+				pc.panelResize(mainFrame.getWidth(), mainFrame.getHeight());
+				c.revalidate();
+				c.repaint();
+			}
+			
+		});
 	}
 }
