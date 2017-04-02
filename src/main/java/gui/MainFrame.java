@@ -3,8 +3,6 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
@@ -66,7 +64,7 @@ public class MainFrame {
 		pc = new PanelClient();
 		c.add(centerpanel = pc, BorderLayout.CENTER);
 		c.revalidate();
-		listener();
+		//		listener();
 	}
 	
 	public static Dimension getDimension() {
@@ -76,17 +74,18 @@ public class MainFrame {
 	public static JFrame getFrame() {
 		return mainFrame;
 	}
+	
+	//	private void listener() {
+	//		mainFrame.addComponentListener(new ComponentAdapter() {
+	//			
+	//			@Override
+	//			public void componentResized(ComponentEvent e) {
+	//				pc.panelResize(mainFrame.getWidth(), mainFrame.getHeight());
+	//				c.revalidate();
+	//				c.repaint();
+	//			}
+	//			
+	//		});
+	//	}
 
-	private void listener() {
-		mainFrame.addComponentListener(new ComponentAdapter() {
-			
-			@Override
-			public void componentResized(ComponentEvent e) {
-				pc.panelResize(mainFrame.getWidth(), mainFrame.getHeight());
-				c.revalidate();
-				c.repaint();
-			}
-			
-		});
-	}
 }

@@ -14,6 +14,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/passwordvalidation/passwordvalidation-1.0.jar" sourcepath="libs/passwordvalidation/passwordvalidation-1.0-src.jar"/>
-	<classpathentry kind="lib" path="C:/Users/josef/Downloads/designgridlayout-1.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
