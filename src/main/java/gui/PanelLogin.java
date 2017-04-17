@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;
@@ -50,6 +51,7 @@ public class PanelLogin extends JPanel {
 	Boolean						pwField				= false, tField = false;
 	static Boolean				registrationExists	= false;
 	ServerConnection			connection;
+	Connection					con;
 	String						pw, username;
 	JFrame						caller;
 
@@ -217,7 +219,7 @@ public class PanelLogin extends JPanel {
 	}
 
 	private Boolean verifyPassword(String password) {
-		return password.matches("[A-Za-z1-9!\\?@\\(\\)\\{\\}\\[\\]\\\\/|<>=~$€%&#\\*-\\+.:,;'\"_]*");
+		return password.matches("[A-Za-z1-9!\\?@\\(\\)\\{\\}\\[\\]\\\\/|<>=~$€%&#\\*-\\+.:,;'\"_]");
 	}
 
 	public static void setBooleanWindow(Boolean b) {

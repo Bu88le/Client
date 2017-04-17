@@ -26,6 +26,6 @@ public class Sendable implements Serializable {
 	}
 	
 	public enum SendableType {
-		REGISTRATION, LOGIN, DELETE_ACCOUNT, MESSAGE, MESSAGE_RESPONSE, EXCEPTION, COMMAND, OTHER //maybe friend request? confirmation (after sth like account deletion, login ...)?
+		REGISTRATION, LOGIN, DELETE_ACCOUNT, MESSAGE, MESSAGE_RESPONSE, EXCEPTION, COMMAND, OTHER, PROFILE //maybe friend request? confirmation (after sth like account deletion, login ...)?
 	}
 }
